@@ -157,3 +157,46 @@
 		});
 
 })(jQuery);
+
+// This function will be called after the Google Maps API is fully loaded
+function initMap() {
+	$(document).ready(function() {
+	  // Center the map on New York City (or any other default location)
+	  var mapCenter = {lat: 40.7128, lng: -74.0060};
+  
+	  // Create the map object
+	  var map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 10,
+		center: mapCenter
+	  });
+  
+	  // Example node locations (markers)
+	  var locations = [
+		{lat: 40.730610, lng: -73.935242},  // Example: New York City
+		{lat: 40.712776, lng: -74.005974},  // Example: Manhattan
+		{lat: 40.758896, lng: -73.985130}   // Example: Times Square
+	  ];
+  
+	  // Loop through locations and add markers (nodes)
+	  $.each(locations, function(index, location) {
+		var marker = new google.maps.Marker({
+		  position: location,
+		  map: map,
+		  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',  // Custom marker icon
+		  title: 'Node ' + (index + 1)  // Title for each node
+		});
+  
+		// Info window for each marker
+		var infoWindowContent = '<p>Node: ' + location.lat + ', ' + location.lng + '</p>';
+		var infowindow = new google.maps.InfoWindow({
+		  content: infoWindowContent
+		});
+  
+		// Add click event to open info window on marker click
+		google.maps.event.addListener(marker, 'click', function() {
+		  infowindow.open(map, marker);
+		});
+	  });
+	});
+  }
+  
