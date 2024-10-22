@@ -162,7 +162,7 @@
 function initMap() {
 	$(document).ready(function() {
 	  // Center the map on New York City (or any other default location)
-	  var mapCenter = {lat: 40.7128, lng: -74.0060};
+	  var mapCenter = {lat: -0.23, lng: 34.15};
   
 	  // Create the map object
 	  var map = new google.maps.Map(document.getElementById('map'), {
@@ -172,9 +172,9 @@ function initMap() {
   
 	  // Example node locations (markers)
 	  var locations = [
-		{lat: 40.730610, lng: -73.935242},  // Example: New York City
-		{lat: 40.712776, lng: -74.005974},  // Example: Manhattan
-		{lat: 40.758896, lng: -73.985130}   // Example: Times Square
+		{lat: -0.231815, lng: 34.143688},  // Example: New York City
+		{lat: -0.233875, lng: 34.146338},  // Example: Manhattan
+		{lat: -0.231687, lng: 34.149707}   // Example: Times Square
 	  ];
   
 	  // Loop through locations and add markers (nodes)
@@ -182,7 +182,7 @@ function initMap() {
 		var marker = new google.maps.Marker({
 		  position: location,
 		  map: map,
-		  icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',  // Custom marker icon
+		  //icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',  // Custom marker icon
 		  title: 'Node ' + (index + 1)  // Title for each node
 		});
   
@@ -191,6 +191,14 @@ function initMap() {
 		var infowindow = new google.maps.InfoWindow({
 		  content: infoWindowContent
 		});
+		var nodepaths = new google.maps.Polyline({
+			path: locations,
+			geodesic: true,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2,
+		});
+		nodepaths.setMap(map);
   
 		// Add click event to open info window on marker click
 		google.maps.event.addListener(marker, 'click', function() {
