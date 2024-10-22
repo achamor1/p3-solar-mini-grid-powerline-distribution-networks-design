@@ -516,7 +516,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		  
 					// Create the map object
 					var map = new google.maps.Map(document.getElementById('map'), {
-					  zoom: 10,
+					  zoom: 20,
 					  center: mapCenter
 					});
 		  
@@ -532,7 +532,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					  var marker = new google.maps.Marker({
 						position: location,
 						map: map,
-						//icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',  // Custom marker icon
+						icon: 'url("data:image/svg+xml,https://upload.wikimedia.org/wikipedia/commons/8/8e/Red-dot.svg");',  // Custom marker icon
 						title: 'Node ' + (index + 1)  // Title for each node
 					  });
 		  
